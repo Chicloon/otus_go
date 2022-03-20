@@ -15,7 +15,6 @@ func Unpack(s string) (string, error) {
 	skipNext := false
 
 	for idx, char := range row {
-
 		if skipNext {
 			skipNext = false
 			continue
@@ -30,7 +29,6 @@ func Unpack(s string) (string, error) {
 		}
 
 		if char == `\` {
-
 			if _, err := strconv.Atoi(nextChar); err == nil || nextChar == `\` {
 				newSting.WriteString(nextChar)
 				skipNext = true
@@ -41,7 +39,6 @@ func Unpack(s string) (string, error) {
 		}
 
 		if digit, err := strconv.Atoi(char); err == nil {
-
 			if _, err := strconv.Atoi(nextChar); err == nil || idx == 0 {
 				fmt.Println(" New string", newSting.String())
 				return "", ErrInvalidString
